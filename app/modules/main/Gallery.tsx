@@ -1,4 +1,4 @@
-import { Gal1, UnderImg } from "@/app/assets/images";
+﻿import { Gal1, UnderImg } from "@/app/assets/images";
 import ArrowBtn from "@/app/components/ArrowBtn";
 import Galery from "@/app/components/Galery";
 const Gallery = () => {
@@ -12,7 +12,7 @@ const Gallery = () => {
       <Galery />
         <Galery />
       </div>
-      <div className="ml-308 mb-20">
+      <div className="ml-247 mb-10">
 <ArrowBtn/>
       </div>
     </div>

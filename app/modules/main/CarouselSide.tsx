@@ -12,11 +12,11 @@ const CarouselSide = () => {
         Популярные блюда
       </h1>
       <Image src={leaf5} alt="leaf7" className="absolute top-300" />
-      <Image src={leaf6} alt="leaf8" className="absolute ml-317 top-240" />
+      <Image src={leaf6} alt="leaf8" className="absolute ml-292 top-240" />
       <div className="p-10">
         <CarouselDemo />
       </div>
-      <div className="p-10 pl-285">
+      <div className="p-10 pl-250">
         <ArrowBtn />
       </div>
     </div>
