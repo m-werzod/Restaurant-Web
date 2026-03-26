@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Telegram, WhatsApp } from "@/app/assets/icons";
+import { Facebook, Instagram, Telegram, WhatsApp } from "@/app/assets/icons/index";
 
 const FooterCopy = () => {
   return (

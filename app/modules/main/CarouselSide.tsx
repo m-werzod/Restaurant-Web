@@ -11,7 +11,7 @@ const CarouselSide = () => {
       <h1 className="text-[48px] font-bold text-center py-20 ">
         Популярные блюда
       </h1>
-      <Image src={leaf5} alt="leaf7" className="absolute top-300" />
+      <Image src={leaf5} alt="leaf7" className="absolute top-330 right-330" />
       <Image src={leaf6} alt="leaf8" className="absolute ml-292 top-240" />
       <div className="p-10">
         <CarouselDemo />
@@ -25,3 +25,5 @@ const CarouselSide = () => {
 export default CarouselSide;
 
 
+  
+         

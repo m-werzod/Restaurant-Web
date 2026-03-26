@@ -5,6 +5,7 @@ import Gallery from './modules/main/Gallery'
 import Info from './modules/main/Info'
 import Main from './modules/main/Main'
 
+
 const page = () => {
   return (
     <div>

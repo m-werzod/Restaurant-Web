@@ -1,4 +1,4 @@
-import { Car, Cofe, Etic, HeadChef, Pitsa, UserInLove } from "@/app/assets/icons";
+import { Car, Cofe, Etic, HeadChef, Pitsa, UserInLove } from "@/app/assets/icons/index";
 import InfoChange from "@/app/components/InfoChange";
 
 const Info = () => {
