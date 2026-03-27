@@ -1,26 +1,40 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useCookies } from "react-cookie";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ForkSpoon } from "@/app/assets/icons";
 
 export default function LoginForm() {
+  const t = useTranslations("login");
   const router = useRouter();
-  const [cookies, setCookie] = useCookies(["token"]);
+  const params = useParams();
+  const locale = (params?.locale as string) || "ru";
+
+  // If already logged in, skip login page and go to home
+  useEffect(() => {
+    const hasToken = document.cookie.split(";").some((c) => c.trim().startsWith("token="));
+    if (hasToken) {
+      router.replace(`/${locale}`);
+    }
+  }, [locale, router]);
+
+  const [, setCookie] = useCookies(["token"]);
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  async function handleLogin(e: React.FormEvent) {
+  async function handleLogin(e: { preventDefault(): void }) {
     e.preventDefault();
     setLoading(true);
     setError("");
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/signin`, // ✅ correct endpoint
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/signin`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -32,15 +46,14 @@ export default function LoginForm() {
       if (!res.ok) throw new Error(data.message || "Login failed");
 
       setCookie("token", data.accessToken, {
-        // ✅ accessToken not token
         path: "/",
         maxAge: 60 * 60 * 24 * 7,
         sameSite: "strict",
       });
 
-      router.push("/");
-    } catch (err: any) {
-      setError(err.message);
+      router.push(`/${locale}`);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Error");
     } finally {
       setLoading(false);
     }
@@ -63,13 +76,13 @@ export default function LoginForm() {
         </div>
 
         <h1 className="text-2xl font-bold text-gray-900 mb-8 self-start">
-          Вход в аккаунт
+          {t("title")}
         </h1>
 
         <form onSubmit={handleLogin} className="w-full flex flex-col gap-6">
           <input
             type="text"
-            placeholder="Ваше имя пользователя"
+            placeholder={t("username")}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             autoComplete="off"
@@ -79,7 +92,7 @@ export default function LoginForm() {
 
           <input
             type="password"
-            placeholder="Пароль"
+            placeholder={t("password")}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="new-password"
@@ -88,7 +101,7 @@ export default function LoginForm() {
           />
 
           <p className="text-xs text-gray-500 -mt-3 cursor-pointer hover:underline self-start">
-            Забыли пароль?
+            {t("forgot")}
           </p>
 
           {error && <p className="text-red-500 text-xs text-center">{error}</p>}
@@ -101,16 +114,16 @@ export default function LoginForm() {
             {loading ? (
               <div className="w-5 h-5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
             ) : (
-              "Вход в аккаунт"
+              t("button")
             )}
           </button>
         </form>
 
         <Link
-          href="/register"
+          href={`/${locale}/register`}
           className="mt-4 text-xs text-blue-500 hover:underline"
         >
-          Еще нет учетной записи?
+          {t("noAccount")}
         </Link>
       </div>
     </div>

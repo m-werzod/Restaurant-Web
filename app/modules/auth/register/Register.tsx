@@ -1,13 +1,19 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function RegisterForm() {
+  const t = useTranslations("register");
   const router = useRouter();
+  const params = useParams();
+  const locale = (params?.locale as string) || "ru";
+
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
-  const [email, setEmail] = useState<string>(""); // ✅ added email
+  const [email, setEmail] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -15,16 +21,16 @@ export default function RegisterForm() {
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  async function handleRegister(e: React.FormEvent) {
+  async function handleRegister(e: { preventDefault(): void }) {
     e.preventDefault();
     setError("");
 
     if (password !== confirmPassword) {
-      setError("Пароли не совпадают");
+      setError(t("errors.passwordMismatch"));
       return;
     }
     if (!agreed) {
-      setError("Примите политику конфиденциальности");
+      setError(t("errors.agreeRequired"));
       return;
     }
 
@@ -32,26 +38,20 @@ export default function RegisterForm() {
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/signup`, // ✅ correct endpoint
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/signup`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            firstName,
-            lastName,
-            email, // ✅ added email
-            username,
-            password,
-          }),
+          body: JSON.stringify({ firstName, lastName, email, username, password }),
         },
       );
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Registration failed");
 
-      router.push("/login");
-    } catch (err: any) {
-      setError(err.message);
+      router.push(`/${locale}/login`);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Error");
     } finally {
       setLoading(false);
     }
@@ -70,13 +70,13 @@ export default function RegisterForm() {
 
       <div className="relative z-10 w-full max-w-sm mx-4 rounded-3xl bg-white/40 backdrop-blur-md shadow-xl px-10 py-10 flex flex-col items-center my-8">
         <h1 className="text-2xl font-bold text-gray-900 mb-8 self-start">
-          Зарегистрироваться
+          {t("title")}
         </h1>
 
         <form onSubmit={handleRegister} className="w-full flex flex-col gap-6">
           <input
             type="text"
-            placeholder="Ваше имя"
+            placeholder={t("firstName")}
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             autoComplete="off"
@@ -86,7 +86,7 @@ export default function RegisterForm() {
 
           <input
             type="text"
-            placeholder="Фамилия"
+            placeholder={t("lastName")}
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             autoComplete="off"
@@ -96,7 +96,7 @@ export default function RegisterForm() {
 
           <input
             type="email"
-            placeholder="Email" // ✅ new email field
+            placeholder={t("email")}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             autoComplete="off"
@@ -106,7 +106,7 @@ export default function RegisterForm() {
 
           <input
             type="text"
-            placeholder="Ваше имя пользователя"
+            placeholder={t("username")}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             autoComplete="off"
@@ -116,7 +116,7 @@ export default function RegisterForm() {
 
           <input
             type="password"
-            placeholder="Пароль"
+            placeholder={t("password")}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="new-password"
@@ -126,7 +126,7 @@ export default function RegisterForm() {
 
           <input
             type="password"
-            placeholder="Подтвердите пароль"
+            placeholder={t("confirmPassword")}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             autoComplete="new-password"
@@ -142,7 +142,7 @@ export default function RegisterForm() {
               className="mt-1 accent-black"
             />
             <span className="text-xs text-gray-600 leading-relaxed">
-              Я прочитал и принял Политику конфиденциальности и Условия*
+              {t("agree")}
             </span>
           </label>
 
@@ -156,16 +156,16 @@ export default function RegisterForm() {
             {loading ? (
               <div className="w-5 h-5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
             ) : (
-              "Зарегистрироваться"
+              t("button")
             )}
           </button>
         </form>
 
         <Link
-          href="/login"
+          href={`/${locale}/login`}
           className="mt-4 text-xs text-blue-500 hover:underline"
         >
-          Уже есть аккаунт?
+          {t("hasAccount")}
         </Link>
       </div>
     </div>

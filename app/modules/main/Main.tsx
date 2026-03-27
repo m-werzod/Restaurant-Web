@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { MainImage, leaf1, leaf2, leaf3, leaf4 } from "@/app/assets/images";
 import Image from "next/image";
 import HeaderHead from "@/app/components/HeaderHead"
@@ -5,6 +6,7 @@ import HeaderMain from "@/app/components/HeaderMain"
 import ArrowBtn from "@/app/components/ArrowBtn";
 
 const Main = () => {
+  const t = useTranslations("hero");
     return (
       <div>
         <HeaderHead />
@@ -20,7 +22,7 @@ const Main = () => {
                 />
 
                 <h1 className="text-7xl font-bold">
-                  Вкусная <br /> еда ждет тебя!
+                  {t("title")}
                 </h1>
              <ArrowBtn/>
               </div>

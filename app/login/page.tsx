@@ -1,5 +1,5 @@
-import LoginForm from "@/app/modules/auth/login/Login";
+import { redirect } from "next/navigation";
 
 export default function LoginPage() {
-  return <LoginForm />;
+  redirect("/ru/login");
 }

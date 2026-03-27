@@ -1,0 +1,96 @@
+{
+  "header": {
+    "phone": "+998(90)758383833",
+    "email": "info@bmgsoft.com",
+    "login": "Login",
+    "logout": "Logout",
+    "lang": {
+      "ru": "Russian",
+      "en": "English",
+      "uz": "Uzbek"
+    }
+  },
+  "nav": {
+    "viewMenu": "View Menu",
+    "menu": "Menu",
+    "news": "News",
+    "reservation": "Reservation",
+    "about": "About Us",
+    "contacts": "Contacts"
+  },
+  "hero": {
+    "title": "Delicious food awaits you!"
+  },
+  "reservation": {
+    "title": "Reserve a Table",
+    "phone": "Your phone number",
+    "people": "For how many people?",
+    "date": "Choose Date",
+    "time": "Choose Time",
+    "place": "Choose Location",
+    "map": "Select location on map",
+    "button": "Book"
+  },
+  "dishes": {
+    "title": "Popular Dishes"
+  },
+  "gallery": {
+    "title": "News / Gallery"
+  },
+  "info": {
+    "title": "Why Choose Us?",
+    "description": "Tickets to museums, visiting attractions and monuments",
+    "features": {
+      "quality": "Quality Products",
+      "delivery": "Fast Delivery",
+      "recipes": "Tasty Recipes",
+      "atmosphere": "Cozy Atmosphere",
+      "chefs": "Experienced Chefs",
+      "service": "Great Service"
+    }
+  },
+  "footer": {
+    "services": "Our Services",
+    "prices": "Prices",
+    "tracking": "Tracking",
+    "report": "Report an Issue",
+    "terms": "Terms of Service",
+    "company": "Our Company",
+    "reports": "Reports",
+    "contact": "Contact Us",
+    "management": "Management",
+    "address": "Address",
+    "country": "Uzbekistan, Tashkent",
+    "street": "Street, 24"
+  },
+  "login": {
+    "title": "Login",
+    "username": "Your username",
+    "password": "Password",
+    "forgot": "Forgot password?",
+    "button": "Login",
+    "noAccount": "Don't have an account?"
+  },
+  "register": {
+    "title": "Register",
+    "firstName": "Your name",
+    "lastName": "Last name",
+    "email": "Email",
+    "username": "Your username",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "agree": "I have read and accepted the Privacy Policy and Terms*",
+    "button": "Register",
+    "hasAccount": "Already have an account?",
+    "errors": {
+      "passwordMismatch": "Passwords do not match",
+      "agreeRequired": "Please accept the privacy policy"
+    }
+  },
+  "logout": {
+    "title": "Logout",
+    "description": "Are you sure you want to logout? You will need to login again.",
+    "cancel": "Cancel",
+    "confirm": "Logout"
+  }
+}

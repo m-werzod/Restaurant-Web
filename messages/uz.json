@@ -1,0 +1,96 @@
+{
+  "header": {
+    "phone": "+998(90)758383833",
+    "email": "info@bmgsoft.com",
+    "login": "Kirish",
+    "logout": "Chiqish",
+    "lang": {
+      "ru": "Ruscha",
+      "en": "Inglizcha",
+      "uz": "O'zbek"
+    }
+  },
+  "nav": {
+    "viewMenu": "Menyuni ko'rish",
+    "menu": "Menyu",
+    "news": "Yangiliklar",
+    "reservation": "Bron",
+    "about": "Biz haqimizda",
+    "contacts": "Kontaktlar"
+  },
+  "hero": {
+    "title": "Mazali taom sizni kutmoqda!"
+  },
+  "reservation": {
+    "title": "Stol band qilish",
+    "phone": "Telefon raqamingiz",
+    "people": "Necha kishiga?",
+    "date": "Sana tanlang",
+    "time": "Vaqt tanlang",
+    "place": "Joy tanlang",
+    "map": "Xaritada joy tanlang",
+    "button": "Band qilish"
+  },
+  "dishes": {
+    "title": "Mashhur taomlar"
+  },
+  "gallery": {
+    "title": "Yangiliklar / Galereya"
+  },
+  "info": {
+    "title": "Nima uchun biz?",
+    "description": "Muzeylar, diqqatga sazovor joylar va yodgorliklar uchun chiptalar",
+    "features": {
+      "quality": "Sifatli mahsulotlar",
+      "delivery": "Tez yetkazib berish",
+      "recipes": "Mazali retseptlar",
+      "atmosphere": "Qulay muhit",
+      "chefs": "Tajribali oshpazlar",
+      "service": "Yaxshi xizmat"
+    }
+  },
+  "footer": {
+    "services": "Xizmatlarimiz",
+    "prices": "Narxlar",
+    "tracking": "Kuzatish",
+    "report": "Xato haqida xabar berish",
+    "terms": "Xizmat shartlari",
+    "company": "Kompaniyamiz",
+    "reports": "Hisobotlar",
+    "contact": "Biz bilan bog'laning",
+    "management": "Boshqaruv",
+    "address": "Manzil",
+    "country": "O'zbekiston, Toshkent",
+    "street": "Ko'cha, 24"
+  },
+  "login": {
+    "title": "Kirish",
+    "username": "Foydalanuvchi nomingiz",
+    "password": "Parol",
+    "forgot": "Parolni unutdingizmi?",
+    "button": "Kirish",
+    "noAccount": "Hisobingiz yo'qmi?"
+  },
+  "register": {
+    "title": "Ro'yxatdan o'tish",
+    "firstName": "Ismingiz",
+    "lastName": "Familiyangiz",
+    "email": "Email",
+    "username": "Foydalanuvchi nomingiz",
+    "password": "Parol",
+    "confirmPassword": "Parolni tasdiqlang",
+    "agree": "Men Maxfiylik siyosati va Shartlarni o'qib qabul qildim*",
+    "button": "Ro'yxatdan o'tish",
+    "hasAccount": "Hisobingiz bormi?",
+    "errors": {
+      "passwordMismatch": "Parollar mos kelmadi",
+      "agreeRequired": "Maxfiylik siyosatini qabul qiling"
+    }
+  },
+  "logout": {
+    "title": "Hisobdan chiqish",
+    "description": "Chiqishga ishonchingiz komilmi? Qayta kirishingiz kerak bo'ladi.",
+    "cancel": "Bekor qilish",
+    "confirm": "Chiqish"
+  }
+}
