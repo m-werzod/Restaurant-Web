@@ -1,7 +1,6 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
-import { useParams } from "next/navigation";
+import { useRef, useState, useSyncExternalStore } from "react";
+import { useParams, useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
 import { EmailIcon, PhoneIcon, UserIcon } from "../assets/icons";
 import dynamic from "next/dynamic";
@@ -12,6 +11,7 @@ import Uz from "@app/assets/icons/Uz.png";
 import { useTranslations } from "next-intl";
 
 const LogoutModal = dynamic(() => import("./LogoutModal"), { ssr: false });
+const subscribe = () => () => {};
 
 const languages = [
   { code: "ru", label: "Русский", flag: Ru },
@@ -27,21 +27,16 @@ const HeaderHead = () => {
 
   const [cookies] = useCookies(["token"]);
   const [showLogout, setShowLogout] = useState<boolean>(false);
-  const [mounted, setMounted] = useState(false);
   const [hovered, setHovered] = useState(false);
   const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const isLoggedIn = mounted && !!cookies.token;
+  const isClient = useSyncExternalStore(subscribe, () => true, () => false);
+  const isLoggedIn = isClient && !!cookies.token;
 
   const handleAuthButton = () => {
     if (isLoggedIn) {
       setShowLogout(true);
     } else {
-      router.push("/login");
+      router.push(`/${currentLocale}/login`);
     }
   };
 
@@ -49,7 +44,7 @@ const HeaderHead = () => {
     const currentPath = window.location.pathname;
     const match = currentPath.match(/^\/(ru|en|uz)(\/.*)?$/);
     const rest = match ? (match[2] || "") : currentPath;
-    window.location.href = `/${locale}${rest}`;
+    window.location.assign(`/${locale}${rest}`);
   };
 
   const handleMouseEnter = () => {
@@ -78,13 +73,11 @@ const HeaderHead = () => {
         </div>
 
         <div className="flex-1 flex items-center justify-end gap-10">
-          {/* Language Dropdown — hover to open */}
           <div
             className="relative"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            {/* Trigger button */}
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl cursor-pointer select-none transition-all duration-200 hover:bg-white/50">
               <div className="w-7 h-7 rounded-full overflow-hidden shrink-0 ring-2 ring-white/60 shadow-sm">
                 <Image
@@ -106,7 +99,6 @@ const HeaderHead = () => {
               </svg>
             </div>
 
-            {/* Dropdown */}
             <div
               className={`absolute right-0 mt-1 w-46 rounded-2xl z-50 overflow-hidden transition-all duration-200 origin-top
                 backdrop-blur-md bg-white/70 border border-white/50 shadow-lg

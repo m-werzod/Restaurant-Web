@@ -12,6 +12,7 @@
   },
   "nav": {
     "viewMenu": "View Menu",
+    "viewAll": "View all",
     "menu": "Menu",
     "news": "News",
     "reservation": "Reservation",
@@ -22,20 +23,38 @@
     "title": "Delicious food awaits you!"
   },
   "reservation": {
-    "title": "Reserve a Table",
+    "title": "Reservation",
+    "formTitle": "Want to book a table?",
     "phone": "Your phone number",
     "people": "For how many people?",
     "date": "Choose Date",
     "time": "Choose Time",
     "place": "Choose Location",
     "map": "Select location on map",
-    "button": "Book"
+    "button": "Book",
+    "workingHours": "Working hours",
+    "days": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    },
+    "contactUs": "Contact us",
+    "writeUs": "Write to us",
+    "callUs": "Call us",
+    "visitUs": "Visit us"
   },
   "dishes": {
     "title": "Popular Dishes"
   },
   "gallery": {
-    "title": "News / Gallery"
+    "title": "News/Gallery"
+  },
+  "news": {
+    "title": "News"
   },
   "info": {
     "title": "Why Choose Us?",

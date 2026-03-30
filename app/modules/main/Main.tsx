@@ -10,6 +10,7 @@ const Main = () => {
     return (
       <div>
         <HeaderHead />
+        
         <div>
           <div className="bg-linear-to-r from-white/40 to-white/40 w-315 h-auto container mx-auto rounded-3xl pb-10">
             <HeaderMain />

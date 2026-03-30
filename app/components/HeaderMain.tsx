@@ -1,11 +1,15 @@
-"use client"
+"use client";
 import { useTranslations } from "next-intl";
 import { SertsaIcon, KarzinaIcon } from "../assets/icons";
 import { Link, usePathname } from "@/i18n/navigation";
+import { useCart } from "../context/CartContext";
+import { useLiked } from "../context/LikedContext";
 
 const HeaderMain = () => {
   const t = useTranslations("nav");
   const pathname = usePathname();
+  const { totalCount } = useCart();
+  const { likedCount } = useLiked();
 
   return (
     <div className="flex items-center justify-between container mx-auto py-6 px-17">
@@ -42,16 +46,30 @@ const HeaderMain = () => {
           <li>{t("contacts")}</li>
         </Link>
       </ul>
+
       <div className="flex items-center gap-4">
-        <div className="cursor-pointer flex items-center justify-center border-2 border-black text-black w-8.25 h-8.25 rounded-full p-1">
+        {/* Liked */}
+        <Link href="/liked" className="relative cursor-pointer flex items-center justify-center border-2 border-black text-black w-8.25 h-8.25 rounded-full p-1 hover:bg-black/5 transition">
           <SertsaIcon />
-        </div>
-        <div className="cursor-pointer border-2 border-black text-black rounded-full p-1 flex justify-center items-center w-8.25 h-8.25">
+          {likedCount > 0 && (
+            <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center leading-none">
+              {likedCount > 99 ? "99+" : likedCount}
+            </span>
+          )}
+        </Link>
+
+        {/* Cart */}
+        <Link href="/korzina" className="relative cursor-pointer border-2 border-black text-black rounded-full p-1 flex justify-center items-center w-8.25 h-8.25 hover:bg-black/5 transition">
           <KarzinaIcon />
-        </div>
+          {totalCount > 0 && (
+            <span className="absolute -top-1.5 -right-1.5 bg-black text-white text-[10px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center leading-none">
+              {totalCount > 99 ? "99+" : totalCount}
+            </span>
+          )}
+        </Link>
       </div>
     </div>
   );
-}
+};
 
-export default HeaderMain
+export default HeaderMain;

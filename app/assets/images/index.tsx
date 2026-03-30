@@ -16,4 +16,15 @@ import Gal1 from "./Gal1.svg"
 import Gal2 from "./Gal2.svg";
 import Gal3 from "./Gal3.svg";
 import UnderImg from "./UnderImg.svg"
-export { leaf4, leaf3, MainImage,leaf2,leaf1,Meal1,Meal2,Meal3,Pizza,leaf5,leaf6,leaf7,leaf8,Gal1,UnderImg,Gal2,Gal3};
+import Card1 from "./Card1.svg";
+import Card2 from "./Card2.svg";
+import Card3 from "./Card3.svg";
+import Card4 from "./Card4.svg";
+import Card5 from "./Card5.svg";
+import Card6 from "./Card6.svg";
+import Card7 from "./Card7.svg";
+import Card8 from "./Card8.svg";
+import Glass from "./Glass.svg";
+import Nash1 from "./Nash1.svg";
+import Nash2 from "./Nash2.svg";
+export { leaf4, leaf3, MainImage,leaf2,leaf1,Meal1,Meal2,Meal3,Pizza,leaf5,leaf6,leaf7,leaf8,Gal1,UnderImg,Gal2,Gal3,Card1,Card2,Card3,Card4,Card5,Card6,Card7,Card8,Glass,Nash1,Nash2};

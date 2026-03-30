@@ -5,10 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 body{
-  background-image: url(./assets/images//Rectangle\ 1.png);
-background-size: cover;  
-background-repeat: no-repeat;
-background-attachment: scroll;
+  background-color: #fafaf8;
 }
 
 @theme inline {

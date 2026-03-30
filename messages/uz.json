@@ -12,6 +12,7 @@
   },
   "nav": {
     "viewMenu": "Menyuni ko'rish",
+    "viewAll": "Hammasini ko'rish",
     "menu": "Menyu",
     "news": "Yangiliklar",
     "reservation": "Bron",
@@ -22,20 +23,38 @@
     "title": "Mazali taom sizni kutmoqda!"
   },
   "reservation": {
-    "title": "Stol band qilish",
+    "title": "Bron",
+    "formTitle": "Stol band qilmoqchimisiz?",
     "phone": "Telefon raqamingiz",
     "people": "Necha kishiga?",
     "date": "Sana tanlang",
     "time": "Vaqt tanlang",
     "place": "Joy tanlang",
     "map": "Xaritada joy tanlang",
-    "button": "Band qilish"
+    "button": "Band qilish",
+    "workingHours": "Ish vaqti",
+    "days": {
+      "monday": "Dushanba",
+      "tuesday": "Seshanba",
+      "wednesday": "Chorshanba",
+      "thursday": "Payshanba",
+      "friday": "Juma",
+      "saturday": "Shanba",
+      "sunday": "Yakshanba"
+    },
+    "contactUs": "Biz bilan bog'laning",
+    "writeUs": "Yozing bizga",
+    "callUs": "Qo'ng'iroq qiling",
+    "visitUs": "Tashrif buyuring"
   },
   "dishes": {
     "title": "Mashhur taomlar"
   },
   "gallery": {
-    "title": "Yangiliklar / Galereya"
+    "title": "Yangiliklar/Galereya"
+  },
+  "news": {
+    "title": "Yangiliklar"
   },
   "info": {
     "title": "Nima uchun biz?",
