@@ -1,12 +1,16 @@
 "use client";
 import { KarzinkaBtn } from "../assets/icons";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Meal2 } from "../assets/images";
 import { useCart, CartProduct } from "../context/CartContext";
 import { useLiked } from "../context/LikedContext";
+import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 
 type Props = {
   product?: CartProduct;
+  localImage?: StaticImageData;
+  href?: string;
 };
 
 const defaultProduct: CartProduct = {
@@ -17,13 +21,24 @@ const defaultProduct: CartProduct = {
   image: "",
 };
 
-const CarouselTall = ({ product = defaultProduct }: Props) => {
+const CarouselTall = ({ product = defaultProduct, localImage, href }: Props) => {
   const { addToCart } = useCart();
   const { toggleLiked, isLiked } = useLiked();
   const liked = isLiked(product.id);
+  const router = useRouter();
+  const params = useParams();
+  const locale = (params?.locale as string) || "ru";
+
+  const goToDetail = () => {
+    const target = href ?? `/${locale}/more?id=${product.id}&name=${encodeURIComponent(product.name)}&desc=${encodeURIComponent(product.description)}&price=${product.price}&img=${encodeURIComponent(product.image ?? "")}`;
+    router.push(target);
+  };
 
   return (
-    <div className="relative bg-linear-to-r from-white/40 to-white/40 w-66 h-80 rounded-4xl p-4.5 pt-44 overflow-visible">
+    <div
+      onClick={goToDetail}
+      className="relative bg-linear-to-r from-white/40 to-white/40 w-full sm:w-66 h-80 rounded-4xl p-4.5 pt-44 overflow-visible cursor-pointer hover:scale-[1.02] transition-transform duration-200"
+    >
       {product.image ? (
         <img
           src={product.image}
@@ -32,7 +47,7 @@ const CarouselTall = ({ product = defaultProduct }: Props) => {
         />
       ) : (
         <Image
-          src={Meal2}
+          src={localImage ?? Meal2}
           alt={product.name}
           className="absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2"
         />
@@ -41,7 +56,7 @@ const CarouselTall = ({ product = defaultProduct }: Props) => {
       <div className="flex justify-between items-center mb-2">
         <h2 className="text-2xl font-bold truncate max-w-35">{product.name}</h2>
         <button
-          onClick={() => toggleLiked(product)}
+          onClick={(e) => { e.stopPropagation(); toggleLiked(product); }}
           className="cursor-pointer transition-transform active:scale-90"
           aria-label="Like"
         >
@@ -64,7 +79,7 @@ const CarouselTall = ({ product = defaultProduct }: Props) => {
       <div className="flex justify-between items-center mt-auto">
         <h1 className="text-2xl font-bold">${product.price.toFixed(2)}</h1>
         <button
-          onClick={() => addToCart(product)}
+          onClick={(e) => { e.stopPropagation(); addToCart(product); }}
           className="w-13 h-12 bg-black rounded-[5px] flex items-center justify-center cursor-pointer hover:bg-gray-800 transition active:scale-95"
           aria-label="Add to cart"
         >

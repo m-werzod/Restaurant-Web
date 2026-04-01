@@ -60,19 +60,19 @@ const HeaderHead = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between container mx-auto px-4 py-6">
-        <div className="flex-1 flex items-center gap-10 py-2">
-          <span className="flex items-center gap-2">
+      <div className="flex items-center justify-between container mx-auto px-4 py-3 md:py-6">
+        <div className="hidden md:flex flex-1 items-center gap-10 py-2">
+          <span className="flex items-center gap-2 text-sm">
             <PhoneIcon />
             +998(90)758383833
           </span>
-          <span className="flex items-center gap-2">
+          <span className="flex items-center gap-2 text-sm">
             <EmailIcon />
             info@bmgsoft.com
           </span>
         </div>
 
-        <div className="flex-1 flex items-center justify-end gap-10">
+        <div className="flex flex-1 items-center justify-end gap-4 md:gap-10">
           <div
             className="relative"
             onMouseEnter={handleMouseEnter}

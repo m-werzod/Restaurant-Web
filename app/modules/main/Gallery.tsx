@@ -1,4 +1,5 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+import { useTranslations } from "next-intl";
 import ViewAllBtn from "@/app/components/ViewAllBtn";
 import NewsCard from "@/app/components/NewsCard";
 import { Gal1, Gal2, Gal3, UnderImg } from "@/app/assets/images";
@@ -12,16 +13,16 @@ const cards = [
   { image: Gal3 },
 ];
 
-const Gallery = async () => {
-  const t = await getTranslations("gallery");
+const Gallery = () => {
+  const t = useTranslations("gallery");
 
   return (
-    <div className="container mx-auto px-15">
-      <h1 className="text-[48px] font-bold text-center py-20 mb-15">
+    <div className="container mx-auto px-4 md:px-15">
+      <h1 className="text-2xl md:text-[48px] font-bold text-center py-10 md:py-20 mb-6 md:mb-15">
         {t("title")}
       </h1>
 
-      <div className="flex justify-between items-start px-0 mb-6">
+      <div className="flex flex-col md:flex-row justify-between items-start gap-6 md:gap-0 mb-6">
         {cards.map((card, i) => (
           <NewsCard
             key={i}

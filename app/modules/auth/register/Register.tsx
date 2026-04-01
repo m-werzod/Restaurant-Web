@@ -58,15 +58,7 @@ export default function RegisterForm() {
   }
 
   return (
-    <div
-      className="min-h-screen w-full flex items-center justify-center"
-      style={{
-        backgroundImage: "url('/assets/images/bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="absolute inset-0 backdrop-blur-sm bg-white/10" />
+    <div className="min-h-screen w-full flex items-center justify-center">
 
       <div className="relative z-10 w-full max-w-sm mx-4 rounded-3xl bg-white/40 backdrop-blur-md shadow-xl px-10 py-10 flex flex-col items-center my-8">
         <h1 className="text-2xl font-bold text-gray-900 mb-8 self-start">

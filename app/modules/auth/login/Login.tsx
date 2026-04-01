@@ -68,16 +68,7 @@ export default function LoginForm() {
   }
 
   return (
-    <div
-      className="min-h-screen w-full flex items-center justify-center relative overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #f5e6d3 0%, #fdf0e0 40%, #e8f4e8 100%)",
-      }}
-    >
-      {/* decorative blobs */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-orange-200/50 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-amber-200/50 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-yellow-100/40 rounded-full blur-2xl pointer-events-none" />
+    <div className="min-h-screen w-full flex items-center justify-center">
 
       <div className="relative z-10 w-full max-w-sm mx-4 rounded-3xl bg-white/40 backdrop-blur-md shadow-xl px-10 py-10 flex flex-col items-center">
         <div className="w-25 h-25 rounded-full bg-black flex items-center justify-center mb-6 -mt-16 shadow-lg">

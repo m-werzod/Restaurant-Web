@@ -4,8 +4,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body{
-  background-color: #fafaf8;
+  background-image: url(./assets/images/Rectangle\ 1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
 }
 
 @theme inline {
