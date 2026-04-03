@@ -19,7 +19,8 @@ export async function apiFetch(
   )
 
   if (res.status === 401) {
-    window.location.href = '/login'
+    const locale = window.location.pathname.match(/^\/(ru|en|uz)/)?.[1] ?? 'ru'
+    window.location.href = `/${locale}/login`
   }
 
   return res.json()

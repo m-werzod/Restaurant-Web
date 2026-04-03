@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { getLocale } from "next-intl/server";
 import AdminDashboard from "./AdminDashboard";
 
 const API_BASE = "https://anorkhulov.uz";
@@ -53,13 +54,13 @@ async function fetchData<T>(path: string, token: string): Promise<T[]> {
 }
 
 const AdminPage = async () => {
-  const cookieStore = await cookies();
+  const [cookieStore, locale] = await Promise.all([cookies(), getLocale()]);
   const token = cookieStore.get("token")?.value;
 
-  if (!token) redirect("/ru/login");
+  if (!token) redirect(`/${locale}/login`);
 
   const decoded = decodeJwt(token);
-  if (decoded.role !== "ADMIN") redirect("/ru");
+  if (decoded.role !== "ADMIN") redirect(`/${locale}`);
 
   const [cooks, customers, foodItems] = await Promise.all([
     fetchData<Cook>("/api/cook", token),

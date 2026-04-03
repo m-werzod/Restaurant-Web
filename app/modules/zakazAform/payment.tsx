@@ -32,7 +32,7 @@ const Payment = () => {
     (sum, item) => sum + item.price * item.qty,
     0
   );
-  const deliveryFee = 0;
+  const deliveryFee: number = 0;
   const total = subtotal + deliveryFee;
 
   const handleOrder = () => {

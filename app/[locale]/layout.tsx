@@ -20,7 +20,7 @@ export default async function LocaleLayout({
   }
 
   return (
-    <NextIntlClientProvider>
+    <NextIntlClientProvider locale={locale}>
       {children}
     </NextIntlClientProvider>
   );
